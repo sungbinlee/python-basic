@@ -178,8 +178,50 @@ print(f"My name is {name} and I am {age} years old.")
 # 출력: My name is Sungbin and I am 26 years old.
 ```
 ### pass
+코딩할 때 전체 구조를 먼저 잡아두고 내부 구현을 나중에 차근차근 진행하는 것은 매우 유용한 접근 방식입니다. 이렇게 하면 코드를 모듈화하고 개발 작업을 효과적으로 관리할 수 있습니다. 파이썬에서 pass는 널 연산으로, 아무것도 수행하지 않는 역할을 합니다. 주로 아직 구현되지 않은 코드 블록을 나타내는 데 사용됩니다. 이것은 다음과 같은 상황에서 유용합니다:
+1. 코드 스켈레톤 작성: 프로젝트의 초기 단계에서 전체 구조를 설계하고 함수, 클래스 등의 뼈대를 만들 때 pass를 사용하여 구현하지 않은 부분을 표시합니다.
+```python
+def my_function():
+    pass  # 나중에 구현할 내용
 
+class MyClass:
+    def my_method(self):
+        pass  # 추후에 메서드 구현 예정
+```
+2. 인덴트 오류 방지: if, for, while 등의 제어 구문에서 코드 블록이 필요하지만 아직 내부 구현이 준비되지 않았을 때, pass를 사용하여 인덴트 오류를 방지할 수 있습니다.
+```python
+if condition:
+    pass  # 아직 코드를 작성하지 않았음
+```
+이러한 방식으로 pass를 사용하여 아직 구현되지 않은 부분을 나타내면 코드의 전체 구조를 잡아두고 나중에 추가적인 구현을 할 수 있습니다. 이것은 개발 프로세스를 더 효율적으로 관리하고 다른 개발자와 협업할 때 코드의 명확성을 유지하는 데 도움이 됩니다.
 ### locals
+locals() 함수는 현재 스코프(로컬 스코프)에 있는 모든 변수와 그들의 값들을 딕셔너리로 반환하는 파이썬 내장 함수입니다. 이것은 디버깅 작업에서 매우 유용합니다. pprint 함수를 사용하여 이 딕셔너리를 출력하면, 클래스 내부의 모든 로컬 변수를 쉽게 검사할 수 있습니다.
+```python
+import pprint
+
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def calculate_sum(self):
+        sum_result = self.x + self.y
+
+        # 로컬 변수 출력
+        pprint.pprint(locals())
+
+my_instance = MyClass(5, 7)
+my_instance.calculate_sum()
+
+```
+`pprint`를 사용하여 `locals()` 함수의 결과를 출력하면 로컬 변수들을 구조적으로 볼 수 있습니다. 
+```python
+{'self': <__main__.MyClass object at 0x7f995f986220>,
+ 'sum_result': 12,
+ 'x': 5,
+ 'y': 7}
+```
+이렇게 클래스 내부의 모든 로컬 변수를 출력하고, 디버깅할 때 변수 값을 확인하는 데 도움이 됩니다. pprint를 사용하면 출력이 더 가독성이 있어 디버깅 프로세스를 간편하게 만들 수 있습니다.
 
 ## 코딩 스타일
 
