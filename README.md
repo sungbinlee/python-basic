@@ -98,10 +98,85 @@ for i, v in enumerate(a):
 인덱스 1: banana
 인덱스 2: cherry
 ```
-### //
+### // 나눗셈 연산자
+
+파이썬 2 이하에서는 기본 나눗셈 연산자 / 는 타입을 유지합니다. 따라서 정수를 정수로 나누어도 정수 형태의 결과를 반환합니다. 예를 들어, 5 / 3을 실행하면 결과는 1이 됩니다.
+
+그러나 파이썬 3 이상에서는 나눗셈 연산자 동작 방식이 변경되었습니다. PEP 238에서 이 변경이 제안되었고, 파이썬 3 이상에서는 / 연산자를 사용하여 나눗셈을 하면 항상 부동 소수점 형태의 결과가 반환됩니다. 즉, 5 / 3을 실행하면 결과는 1.6666666666666667과 같은 부동 소수점 숫자가 반환됩니다.
+
+이와는 별도로, 파이썬 3 이상에서는 정수형을 나눗셈할 때 몫을 구하기 위해 // 연산자를 사용할 수 있습니다. // 연산자는 나눗셈 결과의 소수 부분을 버리고 정수 몫만 반환합니다. 예를 들어, 5 // 3을 실행하면 결과는 1이 됩니다.
+
+나머지를 구하기 위해서는 % 연산자를 사용하고, 몫과 나머지를 함께 구하기 위해 divmod() 함수를 사용할 수 있습니다.
+```python
+# 파이썬 2 이하에서 나눗셈 연산
+result = 5 / 3
+print(result)  # 출력: 1
+
+# 파이썬 3 이상에서 나눗셈 연산
+result = 5 / 3
+print(result)  # 출력: 1.6666666666666667
+
+# 정수 몫을 구하기 위해 // 연산자 사용
+integer_quotient = 5 // 3
+print(integer_quotient)  # 출력: 1
+
+# 나머지를 구하기 위해 % 연산자 사용
+remainder = 5 % 3
+print(remainder)  # 출력: 2
+
+# 몫과 나머지를 함께 구하기 위해 divmod() 함수 사용
+quotient, remainder = divmod(5, 3)
+print(quotient)  # 출력: 1
+print(remainder)  # 출력: 2
+```
 
 ### print
+디버깅을 위해 print() 함수를 사용하는 것은 매우 일반적입니다. 아래에 몇 가지 print() 함수를 사용한 예시입니다.
 
+1. 콤마(,)로 값을 구분하여 출력하는 방법:
+```python
+x = 10
+y = 20
+print("x:", x, "y:", y)
+# 출력: x: 10 y: 20
+```
+2. `sep` 파라미터를 사용하여 구분자를 지정하는 방법:
+```python
+x = 10
+y = 20
+print(x, y, sep=', ')
+# 출력: 10, 20
+```
+3. `end` 파라미터를 사용하여 줄 바꿈을 제한하는 방법:
+```python
+for i in range(5):
+    print(i, end=' ')
+# 출력: 0 1 2 3 4
+```
+4. 리스트를 출력할 때 `join()`을 사용:
+```python
+my_list = [1, 2, 3, 4, 5]
+print(', '.join(map(str, my_list))
+# 출력: 1, 2, 3, 4, 5
+```
+5. 인덱스와 값을 함께 출력하는 예시:
+```python
+fruits = ["apple", "banana", "cherry"]
+for index, fruit in enumerate(fruits):
+    print("Index {} - {}".format(index + 1, fruit))
+# 출력:
+# Index 1 - apple
+# Index 2 - banana
+# Index 3 - cherry
+
+```
+6. f-string을 사용한 예시(파이썬 3.6+):
+```python
+name = "Sungbin"
+age = 26
+print(f"My name is {name} and I am {age} years old.")
+# 출력: My name is Sungbin and I am 26 years old.
+```
 ### pass
 
 ### locals
